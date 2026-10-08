@@ -75,17 +75,11 @@ function idz(kierunek) {
       console.log("Podaj kierunek 'prawo' lub 'lewo'");
       return
   }
-  // console.log(nastepnyPokoj);
-  
   
   // TODO B3: odrzuc pokoj poza 1..4 i nieznany kierunek bez kosztu.
   if(nastepnyPokoj<1 || nastepnyPokoj>4) return
   // TODO B4: zapisz poprawny pokoj, rozejrzyj(), zakonczTure().
   pokoj = nastepnyPokoj
-
-  // console.log(pokoj);
-  // console.log(energia);
-  
   
   rozejrzyj()
   zakonczTure()
