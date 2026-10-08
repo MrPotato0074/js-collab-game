@@ -33,6 +33,21 @@ function zakonczTure() {
   }
 }
 
+function pasekEnergii(){
+  let napis = "Pasek energi: ["
+
+  for(let i=0;i<MAKS_ENERGIA;i++){
+    if(i<energia){
+      napis+="█ "
+    } else{
+      napis+="░ "
+    }
+  }
+  napis+="]"
+  return napis
+
+}
+
 // SEKCJA A — INFORMACJE I MAPA
 function nazwaPokoju(numer) {
   // TODO A1: switch; zwroc nazwe pokoju jako tekst.
@@ -69,6 +84,8 @@ function status() {
   // TODO A3: wypisz pokoj, energie, przedmioty, zasilanie i stan gry.
   console.log(`Pokoj: ${pokoj}`);
   console.log(`Energia: ${energia} z 10`);
+  console.log(pasekEnergii());
+  
   if(karta && bezpiecznik) {
     console.log(`Przedmiot/y: Karta i Bezpiecznik`);
   }
