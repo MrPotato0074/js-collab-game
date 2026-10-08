@@ -36,23 +36,93 @@ function zakonczTure() {
 // SEKCJA A — INFORMACJE I MAPA
 function nazwaPokoju(numer) {
   // TODO A1: switch; zwroc nazwe pokoju jako tekst.
-  return "Nazwa do uzupelnienia";
+  switch(numer) {
+    case 1: {
+      return "Recepcja";
+      break;
+    }
+    case 2: {
+      return "Magazyn";
+      break;
+    }
+    case 3: {
+      return "Serwerownia";
+      break;
+    }
+    case 4: {
+      return "Wyjscie";
+      break;
+    }
+    default: {
+      return "Nieznane pomieszczenie!";
+      break;
+    }
+  }
 }
 function pomoc() {
-  console.log('Dostepne: start(), pomoc(), status(), mapa(), rozejrzyj(), idz("prawo"), akcja("karta")');
+  console.log('Dostepne: start(), pomoc(), status(), mapa(), rozejrzyj(), idz("prawo"), idz("lewo"), akcja("karta"), akcja("bezpiecznik"), akcja("napraw"), akcja("wyjdz")');
+  console.log("Kazdy ruch i akcje kosztuja 1 energie. Ogladanie mapy, pomoc, stan i opisy sa bezplatne. Literówka, ruch w ścianę, ponowne zabranie przedmiotu i akcja bez spełnionych warunków są bezpłatne.")
+  console.log("Gdy energia wyniesie zero, UMIERASZ")
   // TODO A5: dopisz pozostale kierunki i akcje oraz zasade kosztu.
 }
 function status() {
   // TODO A3: wypisz pokoj, energie, przedmioty, zasilanie i stan gry.
-  console.log("Status do uzupelnienia");
+  console.log(`Pokoj: ${pokoj}`);
+  console.log(`Energia: ${energia} z 10`);
+  console.log(`Przedmioty: `);
+  console.log("Zasilanie: " + (zasilanie ? "Włączone" : "Wyłączone"));
+  console.log("Karta: " + (karta ? "Posiadzasz" : "Brak"));
 }
 function mapa() {
   // TODO A2: petla for od 1 do 4; nazwa i znacznik aktualnego pokoju.
-  console.log("Mapa do uzupelnienia");
+  for(let i=1;i<=4;i++) {
+    if(i == pokoj) {
+      console.log(`${i} ${nazwaPokoju(i)} <- Jestes tutaj`)
+    }
+    else {
+      console.log(`${i} ${nazwaPokoju(i)}`)
+    }
+  }
+  
 }
 function rozejrzyj() {
   // TODO A4: switch(pokoj); opis zgodny ze stanem przedmiotow.
-  console.log("Opis pokoju do uzupelnienia");
+  switch(pokoj) {
+    case 1: {
+      if(!karta) {
+        console.log("Karta lezy na biurku!");
+        break;
+      }
+      else {
+        console.log("Nic ciekawego, recepcja swieci pustkami...")
+        break;
+      }
+    }
+    case 2: {
+      if(!bezpiecznik && !zasilanie) {
+        console.log("Na polce lezy przykurzony bezpiecznik, oby jescze dzialal");
+        break;
+      }
+      else {
+        console.log("W magazynie widzisz tylko stare kable i komputery");
+        break;
+      }
+    }
+    case 3: {
+      if(zasilanie) {
+        console.log("Zasilanie przywrocone! Juz niedlugo sie wydostaniesz");
+        break;
+      }
+      else {
+        console.log("Zasilanie nadal nie dziala...");
+        break;
+      }
+    }
+    case 4: {
+      console.log("Do wyjscia potrzebujesz karty i dzialajacego zasilania, gotowy?");
+      break;
+    }
+  }
 }
 
 // SEKCJA B — RUCH
