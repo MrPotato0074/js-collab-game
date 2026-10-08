@@ -69,7 +69,18 @@ function status() {
   // TODO A3: wypisz pokoj, energie, przedmioty, zasilanie i stan gry.
   console.log(`Pokoj: ${pokoj}`);
   console.log(`Energia: ${energia} z 10`);
-  console.log(`Przedmioty: `);
+  if(karta && bezpiecznik) {
+    console.log(`Przedmiot/y: Karta i Bezpiecznik`);
+  }
+  else if(karta && !bezpiecznik) {
+    console.log(`Przedmiot/y: Karta`);
+  }
+  else if(!karta && bezpiecznik) {
+    console.log(`Przedmiot/y: Bezpiecznik`);
+  }
+  else {
+    console.log(`Przedmiot/y: Brak`);
+  }
   console.log("Zasilanie: " + (zasilanie ? "Włączone" : "Wyłączone"));
   console.log("Karta: " + (karta ? "Posiadzasz" : "Brak"));
 }
